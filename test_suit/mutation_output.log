@@ -1,0 +1,8 @@
+[*] Start mutation process:
+   - targets: isTriangle
+   - tests: test_mutationAdequate
+[*] Can't load module: test_mutationAdequate (ModuleNotFoundError: No module named 'test_mutationAdequate')
+[*] Start mutation process:
+   - targets: isTriangle
+   - tests: test_mutationAdequate
+[*] Can't load module: test_mutationAdequate (ModuleNotFoundError: No module named 'test_mutationAdequate')
