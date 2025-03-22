@@ -26,3 +26,6 @@ class TestStatementCoverage(unittest.TestCase):
 
     def test_large_numbers(self):
         self.assertEqual(Triangle.classify(100000, 100000, 100000), Triangle.Type.EQUILATERAL)  # Stress test
+
+if __name__ == '__main__':
+    unittest.main()
