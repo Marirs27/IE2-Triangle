@@ -5,99 +5,157 @@ class TestDecisionCoverage(unittest.TestCase):
 
     # Valid Decisions
     def testEquilateral(self):
-        self.assertEqual(Triangle.classify(8, 8, 8), Triangle.Type.EQUILATERAL)
+        actual = Triangle.classify(8, 8, 8)
+        expected = Triangle.Type.EQUILATERAL
+        self.assertEqual(actual, expected)
 
     def testScalene1(self):
-        self.assertEqual(Triangle.classify(9, 12, 5), Triangle.Type.SCALENE)
+        actual = Triangle.classify(9, 12, 5)
+        expected = Triangle.Type.SCALENE
+        self.assertEqual(actual, expected)
         
     def testScalene2(self):
-        self.assertEqual(Triangle.classify(13,14,15), Triangle.Type.SCALENE)
+        actual = Triangle.classify(13, 14, 15)
+        expected = Triangle.Type.SCALENE
+        self.assertEqual(actual, expected)
     
     def testScalene3(self):
-        self.assertEqual(Triangle.classify(7,10,5), Triangle.Type.SCALENE)
+        actual = Triangle.classify(7, 10, 5)
+        expected = Triangle.Type.SCALENE
+        self.assertEqual(actual, expected)
 
     def testIsosceles1(self):
-        self.assertEqual(Triangle.classify(7, 7, 5), Triangle.Type.ISOSCELES)
+        actual = Triangle.classify(7, 7, 5)
+        expected = Triangle.Type.ISOSCELES
+        self.assertEqual(actual, expected)
 
     def testIsosceles2(self):
-        self.assertEqual(Triangle.classify(6, 5, 6), Triangle.Type.ISOSCELES)  # Different position for isosceles
+        actual = Triangle.classify(6, 5, 6)
+        expected = Triangle.Type.ISOSCELES  # Different position for isosceles
+        self.assertEqual(actual, expected)
     
     def testIsosceles3(self):
-        self.assertEqual(Triangle.classify(5, 6, 6), Triangle.Type.ISOSCELES)  # Different position for isosceles
+        actual = Triangle.classify(5, 6, 6)
+        expected = Triangle.Type.ISOSCELES  # Different position for isosceles
+        self.assertEqual(actual, expected)
 
     # Invalid Decisions
     def testInvalidZero(self):
-        self.assertEqual(Triangle.classify(0, 2, 2), Triangle.Type.INVALID)
+        actual = Triangle.classify(0, 2, 2)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testInvalidNegative(self):
-        self.assertEqual(Triangle.classify(-2, 3, 3), Triangle.Type.INVALID)
+        actual = Triangle.classify(-2, 3, 3)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testScaleneInvalid1(self):
-        self.assertEqual(Triangle.classify(1, 10, 5), Triangle.Type.INVALID)
+        actual = Triangle.classify(1, 10, 5)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testScaleneInvalid2(self):
-        self.assertEqual(Triangle.classify(10, 3, 2), Triangle.Type.INVALID)
+        actual = Triangle.classify(10, 3, 2)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testIsocelesInvalid1(self):
-        self.assertEqual(Triangle.classify(7, 7, 15), Triangle.Type.INVALID)
+        actual = Triangle.classify(7, 7, 15)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testIsocelesInvalid2(self):
-        self.assertEqual(Triangle.classify(6, 12, 6), Triangle.Type.INVALID)
+        actual = Triangle.classify(6, 12, 6)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testInvalidEquality1(self):
-        self.assertEqual(Triangle.classify(5, 5, 10), Triangle.Type.INVALID)  # Just fails the triangle rule
+        actual = Triangle.classify(5, 5, 10)  # Just fails the triangle rule
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testInvalidEquality2(self):
-        self.assertEqual(Triangle.classify(5, 5, 9), Triangle.Type.ISOSCELES)  # Just passes the triangle rule
-
+        actual = Triangle.classify(5, 5, 9)  # Just passes the triangle rule
+        expected = Triangle.Type.ISOSCELES
+        self.assertEqual(actual, expected)
 
     # Additional Tests
     def testLargeSide(self):
-        self.assertEqual(Triangle.classify(100, 1, 1), Triangle.Type.INVALID)  # Extreme imbalance
+        actual = Triangle.classify(100, 1, 1)  # Extreme imbalance
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def stressTest(self):
-        self.assertEqual(Triangle.classify(100000, 100000, 100000), Triangle.Type.EQUILATERAL)  # Large numbers
+        actual = Triangle.classify(100000, 100000, 100000)  # Large numbers
+        expected = Triangle.Type.EQUILATERAL
+        self.assertEqual(actual, expected)
 
     def testSwappedSides(self):
-        self.assertEqual(Triangle.classify(10, 5, 5), Triangle.Type.INVALID)  # Triangle inequality fails
+        actual = Triangle.classify(10, 5, 5)  # Triangle inequality fails
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testMinValue(self):
-        self.assertEqual(Triangle.classify(1, 1, 1), Triangle.Type.EQUILATERAL)  # Smallest possible valid triangle
+        actual = Triangle.classify(1, 1, 1)  # Smallest possible valid triangle
+        expected = Triangle.Type.EQUILATERAL
+        self.assertEqual(actual, expected)
         
     def testBoundaryCaseJustValid(self): 
-        self.assertEqual(Triangle.classify(5, 5, 9), Triangle.Type.ISOSCELES) 
+        actual = Triangle.classify(5, 5, 9)
+        expected = Triangle.Type.ISOSCELES
+        self.assertEqual(actual, expected)
 
     def testBranchFullCoverage(self): 
-        self.assertEqual(Triangle.classify(10, 10, 20), Triangle.Type.INVALID)  
+        actual = Triangle.classify(10, 10, 20)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
         
     def testTriangleInequalityJustValid(self):  # Covers True path for inequality check
-        self.assertEqual(Triangle.classify(7, 7, 13), Triangle.Type.ISOSCELES)  
+        actual = Triangle.classify(7, 7, 13)
+        expected = Triangle.Type.ISOSCELES
+        self.assertEqual(actual, expected)
 
     def testTriangleInequalityJustInvalid(self):  # Covers False path for inequality check
-        self.assertEqual(Triangle.classify(7, 7, 14), Triangle.Type.INVALID)  
+        actual = Triangle.classify(7, 7, 14)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testIsoscelesDifferentPositions1(self):  # (a == b)
-        self.assertEqual(Triangle.classify(8, 8, 5), Triangle.Type.ISOSCELES)  
+        actual = Triangle.classify(8, 8, 5)
+        expected = Triangle.Type.ISOSCELES
+        self.assertEqual(actual, expected)
 
     def testIsoscelesDifferentPositions2(self):  # (a == c)
-        self.assertEqual(Triangle.classify(6, 4, 6), Triangle.Type.ISOSCELES)  
+        actual = Triangle.classify(6, 4, 6)
+        expected = Triangle.Type.ISOSCELES
+        self.assertEqual(actual, expected)
 
     def testIsoscelesDifferentPositions3(self):  # (b == c)
-        self.assertEqual(Triangle.classify(5, 7, 7), Triangle.Type.ISOSCELES)  
+        actual = Triangle.classify(5, 7, 7)
+        expected = Triangle.Type.ISOSCELES
+        self.assertEqual(actual, expected)
 
     def testScaleneValid(self): 
-        self.assertEqual(Triangle.classify(9, 11, 7), Triangle.Type.SCALENE)  
+        actual = Triangle.classify(9, 11, 7)
+        expected = Triangle.Type.SCALENE
+        self.assertEqual(actual, expected)
 
     def testScaleneInvalid(self):  
-        self.assertEqual(Triangle.classify(3, 1, 1), Triangle.Type.INVALID)  
+        actual = Triangle.classify(3, 1, 1)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
     def testLargeNumberValidTriangle(self): 
-        self.assertEqual(Triangle.classify(99999, 100000, 100001), Triangle.Type.SCALENE)  
+        actual = Triangle.classify(99999, 100000, 100001)
+        expected = Triangle.Type.SCALENE
+        self.assertEqual(actual, expected)
 
     def testLargeNumberInvalidTriangle(self):  
-        self.assertEqual(Triangle.classify(100000, 1, 1), Triangle.Type.INVALID)  
-
-
+        actual = Triangle.classify(100000, 1, 1)
+        expected = Triangle.Type.INVALID
+        self.assertEqual(actual, expected)
 
 if __name__ == '__main__':
     unittest.main()
+    
