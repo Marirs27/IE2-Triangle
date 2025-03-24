@@ -76,26 +76,5 @@ class TestStatementCoverage(unittest.TestCase):
         expected = Triangle.Type.ISOSCELES
         self.assertEqual(actual, expected)
         
-    # Error Cases
-    def testStringInput(self):  # Expecting TypeError or INVALID handling
-        # with self.assertRaises(TypeError):
-            # Triangle.classify("a", "b", "c")
-            pass
-
-    def testMixedInput(self):  # Integer + String Mix
-        # with self.assertRaises(TypeError):
-            # Triangle.classify(5, "b", 7)
-            pass
-
-    def testListInput(self):  # Passing a list instead of an integer
-        # with self.assertRaises(TypeError):
-            # Triangle.classify([3, 4, 5], 4, 5)
-            pass
-
-    def testNoneInput(self):  # Passing None as input
-        # with self.assertRaises(TypeError):
-            # Triangle.classify(None, 4, 5)
-            pass
-
 if __name__ == '__main__':
     unittest.main()
