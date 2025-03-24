@@ -7,6 +7,11 @@ class TestMutationAdequacy(unittest.TestCase):
         actual = Triangle.classify(8, 8, 8)
         expected = Triangle.Type.EQUILATERAL
         self.assertEqual(actual, expected)
+    
+    def testLargeValidTriangle(self):
+        actual = Triangle.classify(1000000, 1000000, 1000000)  # Stress test
+        expected = Triangle.Type.EQUILATERAL
+        self.assertEqual(actual, expected)
 
     def testScalene(self):
         actual = Triangle.classify(11, 13, 9)
@@ -58,10 +63,6 @@ class TestMutationAdequacy(unittest.TestCase):
         expected = Triangle.Type.ISOSCELES
         self.assertEqual(actual, expected)
 
-    def testLargeValidTriangle(self):
-        actual = Triangle.classify(1000000, 1000000, 1000000)  # Stress test
-        expected = Triangle.Type.EQUILATERAL
-        self.assertEqual(actual, expected)
 
 if __name__ == '__main__':
     unittest.main()
